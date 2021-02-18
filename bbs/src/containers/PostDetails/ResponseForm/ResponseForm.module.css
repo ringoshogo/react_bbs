@@ -1,0 +1,6 @@
+.ResponseForm {
+    width: auto;
+    display: flex;
+    flex-flow: column;
+    margin: 0 20px;
+}

@@ -1,0 +1,82 @@
+.Response {
+    border: 1px black dashed;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+}
+
+.Profile {
+    margin: 0 10px 0 10px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.Profile h5 {
+    margin: 0 0 5px 0;
+    border-bottom: 2px solid black;
+}
+
+.Profile i {
+    margin-right: 4px;
+}
+
+.Evaluates {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+
+.Evaluates h4 {
+    margin: 0 0 0 15px;
+}
+
+.Evaluate {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+}
+
+.Other {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+
+}
+
+.OtherElem {
+    height: 30px;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.OtherElem h4 {
+    margin: 0 2px -6px 15px;
+}
+
+.OtherElem h5 {
+    margin: 0 0 0 15px;
+}
+
+@media (max-width: 800px) {
+    .Evaluates {
+        color: black;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+    }
+
+    .Evaluate h4{
+        width: 65px;
+    }
+
+    .Profile {
+        margin: 0 10px 10px 10px;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+    }
+}

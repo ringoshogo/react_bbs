@@ -1,0 +1,43 @@
+.InputColumn {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    border-bottom: solid 3px #a8a8a8;
+}
+
+.InputColumn h4 {
+    color: #a8a8a8;
+    width: 110px;
+}
+
+.InputColumn h3 {
+    width: 50%;
+}
+
+.InputColumn input {
+    width: 100%;
+}
+
+@media (max-width: 500px) {
+    .InputColumn {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 10px 10px;
+        border: dashed 3px #a8a8a8;
+    }
+
+    .InputColumn h4 {
+        width: 90%;
+        margin: 5px 0 0;
+        padding: 0 5px;
+        border-bottom: solid 3px #a8a8a8;
+    }
+
+    .InputColumn h3 {
+        margin: 5px;
+    }
+}

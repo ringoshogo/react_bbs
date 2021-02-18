@@ -1,0 +1,147 @@
+.Header {
+    position: fixed;            /* ヘッダーの固定 */
+    width: 100%;                /* 横幅100%　*/
+    padding: 10px 20px 0;
+    box-sizing: border-box;     /* padding を幅:高さに含める */
+    display: block;
+    background-color: white;
+}
+
+.PostDetailsCommon {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+}
+
+.PostDetails {
+    background: rgb(233, 233, 233);
+    border: dotted 3px black;
+    margin-bottom: 10px;
+}
+
+/* 詳細のタイトル */
+
+.PostDetailsHeader {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    padding: 0 20px 0 10px;
+    border-bottom: 2px solid black;
+    align-items: center;
+}
+
+.PostDetailsHeader i {
+    margin-right: 14px;
+}
+
+.PostDetailsHeader h1 {
+    margin: 0;
+}
+
+.PostDetailsTitle {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    margin: 5px 0;
+}
+
+.PostDetailsTitle h5 {
+    margin: 0 10px 0;
+}
+
+/* 詳細のサマリ */
+
+.PostDetailsDescribe {
+}
+
+.PostDetailsSummary {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: -10px;
+}
+
+.PostDetailsSummary h5 {
+    margin: 0 5px 5px;
+    text-align: center;
+}
+
+.PostDetailsSummary h4 {
+    margin: 0 30px 1px;
+    text-align: left;
+}
+
+.PostDetailsSummaryPraph {
+    display: flex;
+    flex-flow: row;
+    justify-content: left;
+}
+
+/* みんなの投稿 */
+.Response {
+    margin: 410px 20px 0;
+}
+
+.PostHeader {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@media (max-width: 500px) {
+    .PostHeader {    
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+    }
+
+    .Response {
+        margin: 440px 20px 0;
+    }
+}
+
+/* 新規投稿 */
+.NewPost {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.NewPost h2 {
+    margin: 0;
+    margin-left: 5px;
+}
+
+/*プラスアイコンを自作する*/
+.PlusIcon {
+    margin-left: 30px;
+    width: 35px;
+	height: 35px;
+    position: relative;
+    border-radius: 50%;
+    line-height: 50px;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.PlusIcon span::before,
+.PlusIcon span::after {
+	display: block;
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 84%;
+	height: 16%;
+	margin: -8% 0 0 -42%;
+    background: black;
+    border-radius: 6px;
+}
+.PlusIcon span::after {
+	transform: rotate(90deg);
+}
+

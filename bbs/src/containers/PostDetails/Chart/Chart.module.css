@@ -1,0 +1,9 @@
+.CustomToolTip {
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 10px;
+    color: darkgrey;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+}

@@ -1,0 +1,65 @@
+version: '3'
+
+services: 
+  react-app:
+    # イメージからインスタンス化するコンテナ名
+    container_name: react-app
+    # コンテナをビルドする際のコマンド
+    build: 
+      context: . 
+      dockerfile: ./docker/react/Dockerfile # dockerfile が格納されたフォルダ
+    command: npm start
+    volumes: 
+      - ./bbs:/app
+    # ホスト側:コンテナ側。60以下でエラーが発生するため文字列指定を推奨
+    ports:
+      - 3000:3000
+
+  api:
+    container_name: api
+    build: 
+      context: .
+      dockerfile: ./docker/python/Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./api:/app
+    command:
+      bash -c "python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+      # 0.0.0.0:8000 を付与しないと docker上のdjango httpにホストからアクセスできない
+    depends_on: 
+      - db
+
+  db:
+      build:
+        context: .
+        dockerfile: ./docker/db/Dockerfile
+      environment:
+        MYSQL_DATABASE: nani_taberu
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_USER: sennseikou
+        MYSQL_PASSWORD: password
+      volumes:
+        - dbdata:/var/lib/mysql/
+      ports:
+        - 5432:3306
+
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./bbs/build:/var/www
+      - ./nginx/:/etc/nginx/conf.d/
+    depends_on: 
+      - react-app
+
+volumes:
+
+  dbdata:
+    driver: local

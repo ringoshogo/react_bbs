@@ -1,0 +1,24 @@
+.NavigationItems {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    height: 100%;
+}
+
+.NavigationItems input {
+    width: 170px;
+    margin: 0 0 15px;
+}
+
+@media (max-width: 679px) {
+    .NavigationItems {
+        flex-flow: column;
+    }
+    .NavigationItems input {
+        width: 170px;
+        margin: 0;
+    }
+}
