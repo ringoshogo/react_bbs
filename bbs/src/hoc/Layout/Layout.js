@@ -6,6 +6,7 @@ import Aux from '../Auxirialy';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import classes from './Layout.module.css';
+import {getLocalStorage} from '../../common/crypto';
 
 class Layout extends Component {
     state ={ 
@@ -43,7 +44,7 @@ class Layout extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticate: localStorage.getItem("token") != null || state.auth.token !== null
+        isAuthenticate: getLocalStorage("token") != null || state.auth.token !== null
     }
 }
 

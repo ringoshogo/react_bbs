@@ -1,5 +1,6 @@
 import axios from '../../axios-post';
 import * as actionTypes from './actionTypes';
+import {getLocalStorage} from '../../common/crypto';
 
 export const addSearchQuery = (query) => {
     return {
@@ -56,7 +57,7 @@ export const addGoodClickSuccess = (goodclickuser, postIndex ,responseIndex) =>{
  * @param {*} responseIndex 
  */
 export const addGoodClick = (response, postIndex, responseIndex) => {
-    const userId = localStorage.getItem("userId");
+    const userId = getLocalStorage("userId");
 
     return dispatch => {
         axios.post("/goodclickuser/",{
@@ -64,7 +65,7 @@ export const addGoodClick = (response, postIndex, responseIndex) => {
             user: userId
         },  {
             headers: {
-                'Authorization': `Token ${localStorage.getItem("token")}`,
+                'Authorization': `Token ${getLocalStorage("token")}`,
             }
         })
         .then(res => {
@@ -156,9 +157,9 @@ const callAxiosFetchPostDetails = (dispatch, postid, index) => {
  */
 export const addResponse = (responseInfo, postid, postIndex) => {
     const postContents = {
-        sex: localStorage.getItem("sex"),
-        age: (new Date().getFullYear() - localStorage.getItem("birthday")),
-        userid: localStorage.getItem("userId"),
+        sex: getLocalStorage("sex"),
+        age: (new Date().getFullYear() - getLocalStorage("birthday")),
+        userid: getLocalStorage("userId"),
         post: postid,
         appearance: responseInfo.appearance,
         taste: responseInfo.taste,
@@ -172,7 +173,7 @@ export const addResponse = (responseInfo, postid, postIndex) => {
     return dispatch => {
         axios.post("/response/", postContents,  {
             headers: {
-                'Authorization': `Token ${localStorage.getItem("token")}`,
+                'Authorization': `Token ${getLocalStorage("token")}`,
             }
         })
         .then(res => {

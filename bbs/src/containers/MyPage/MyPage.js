@@ -5,6 +5,7 @@ import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
 import {getSex} from '../../common/authConst'
 import * as actions from '../../store/actions/index'
+import {getLocalStorage} from '../../common/crypto';
 
 import classes from './MyPage.module.css';
 import Modal from '../../components/UI/Modal/Modal';
@@ -13,16 +14,16 @@ class MyPage extends Component {
     state = {
         form: {
             username: {
-                value: localStorage.getItem("username"), elementType: "label", writable:false, label: "名前", changeable:true,
+                value: getLocalStorage("username"), elementType: "label", writable:false, label: "名前", changeable:true,
             },
             email: {
-                value: localStorage.getItem("email"), elementType: "label", writable:false, label: "メールアドレス", changeable:true,
+                value: getLocalStorage("email"), elementType: "label", writable:false, label: "メールアドレス", changeable:true,
             },
             sex: {
-                value: getSex(localStorage.getItem("sex")), elementType: "label", writable:false, label: "性別", changeable:false,
+                value: getSex(getLocalStorage("sex")), elementType: "label", writable:false, label: "性別", changeable:false,
             },
             birthday: {
-                value: localStorage.getItem("birthday"), elementType: "label", writable:false, label: "誕生年", changeable:false,
+                value: getLocalStorage("birthday"), elementType: "label", writable:false, label: "誕生年", changeable:false,
             }
         },
         modalShow: false,
@@ -116,7 +117,7 @@ class MyPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticate: localStorage.getItem("token") != null || state.auth.token !== null
+        isAuthenticate: getLocalStorage("token") != null || state.auth.token !== null
     }
 }
 

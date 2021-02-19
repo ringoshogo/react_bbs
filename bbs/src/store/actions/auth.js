@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-post';
+import {getLocalStorage, setLocalStorage} from '../../common/crypto';
 
 export const authStart = () => {
     return {
@@ -102,7 +103,7 @@ export const auth = (userInfo, isSignup)=> {
             }else {
                 // ユーザーIDを取得
                 const token = res1.data.key;
-                localStorage.setItem("token", token);
+                setLocalStorage("token", token);
                 axios.get('/rest-auth/user/', {
                     headers: {
                         'Authorization': `Token ${token}`,
@@ -112,12 +113,12 @@ export const auth = (userInfo, isSignup)=> {
                     userInfo.userId = res.data.pk;
                     userInfo.username = res.data.username;
                     dispatch(authSuccess(token, userInfo, isSignup));
-                    localStorage.setItem("userId", userInfo.userId);
-                    localStorage.setItem("username", userInfo.username);
-                    localStorage.setItem("email", userInfo.email);
-                    localStorage.setItem("sex", userInfo.sex.value);
-                    localStorage.setItem("age", userInfo.age);
-                    localStorage.setItem("birthday", userInfo.birthday);
+                    setLocalStorage("userId", userInfo.userId);
+                    setLocalStorage("username", userInfo.username);
+                    setLocalStorage("email", userInfo.email);
+                    setLocalStorage("sex", userInfo.sex.value);
+                    setLocalStorage("age", userInfo.age);
+                    setLocalStorage("birthday", userInfo.birthday);
                 })
                 .catch(err => {
                     console.log("ユーザ情報取得でエラーが発生しました。")
@@ -150,15 +151,15 @@ export const profileUpdate = (username, email, password) => {
     const content = {username: username, email: email, password: password, profile: {birthday: 1990}}
 
     return dispatch => {
-        axios.patch("/users/" + localStorage.getItem("userId") + "/", content,{
+        axios.patch("/users/" + getLocalStorage("userId") + "/", content,{
                 headers: {
-                    'Authorization': `Token ${localStorage.getItem("token")}`,
+                    'Authorization': `Token ${getLocalStorage("token")}`,
                 }
             })
             .then(res => {
                 dispatch(profileUpdateSuccess(res.data))
-                localStorage.setItem("username", res.data.username);
-                localStorage.setItem("email", res.data.email);
+                setLocalStorage("username", res.data.username);
+                setLocalStorage("email", res.data.email);
             })
             .catch(err => console.log(err))
     }
