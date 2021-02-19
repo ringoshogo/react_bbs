@@ -28,6 +28,13 @@ const Posts = props => {
  
     return (
         <div className={classes.Posts}>
+            <div className={classes.PostsNotice}>
+                <h2>※ 注意 ※</h2>
+                <h5>・当ウェブサイトは賞味期限切れ／消費期限切れの食べ物を食べた後の健康状態に何らの責任を追うものではありません<br/>
+                    ・また、当ウェブサイト、またはコンテンツのご利用により、万一、
+                ご利用者様に何らかの不都合や損害が発生したとしても、
+                当ウェブサイトは何らの責任を負うものではありません。</h5>            
+            </div>
             {posts}
         </div>
     );

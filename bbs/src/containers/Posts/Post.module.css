@@ -16,6 +16,24 @@
     color: white;
 }
 
+/* 注意書き */
+.PostsNotice {
+    border: 2px dotted black;
+    box-sizing: border-box;
+    margin-top: 110px;
+}
+
+.PostsNotice h2 {
+    color: red;
+    margin: 4px 0;
+    text-align: center;
+}
+
+.PostsNotice h5 {
+    margin: 4px 0;
+}
+
+
 .Contents {
     display: flex;
     flex-flow: row;

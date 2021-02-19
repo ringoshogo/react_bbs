@@ -1,4 +1,3 @@
-import * as crypto from 'crypto';
 import {encode, decode} from './cryptoConst';
 
 export const setLocalStorage = (key, data) => {
