@@ -2,6 +2,10 @@ import {BarChart, Bar, XAxis, YAxis, Legend, Tooltip, CartesianGrid, ResponsiveC
 
 import classes from './Chart.module.css'
 
+/**
+ * カーソルフォーカス時に詳細説明を表示する。
+ * @param {}} param0 
+ */
 const CustomToolTip = ({active, payload, label}) => {
     if (active) {
         let {taste, appearance, condition} = "";
@@ -24,7 +28,6 @@ const CustomToolTip = ({active, payload, label}) => {
     }
 
 const renderLineChart = props => {
-    
     return(
         <ResponsiveContainer width="90%" height={200}>
             <BarChart data={props.data} margin={{top: 0, right:5, bottom:5, left:0}} barSize={10}>

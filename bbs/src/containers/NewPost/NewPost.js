@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {DropzoneArea} from 'material-ui-dropzone';
 
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';

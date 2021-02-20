@@ -54,7 +54,6 @@ class PostDetails extends Component {
         // GETで取得したポストIDに紐づく投稿を取得する
         const postid = this.props.match.params.postId;
         const post = this.props.posts.filter(e => e.id == postid)[0];
-        console.log(post);
 
         // redux で取得したレスポンスを元にレスポンスコンポーネントを作成する
         let res = null;

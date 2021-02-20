@@ -65,6 +65,11 @@ class UserSerializer(serializers.ModelSerializer):
             password2 = validated_data.pop('password2')
             if password != password2:
                 raise Exception("パスワードとパスワード確認用に異なる値が入力されています。")
+        # email が登録済みの場合
+        email = validated_data.get('email')
+        if User.objects.filter(email=email):
+            raise Exception("既にEメールが登録済みです。")
+
         user = User(**validated_data)
         user.set_password(user_password)
         user.save()

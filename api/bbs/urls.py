@@ -28,8 +28,8 @@ urlpatterns = [
     path('api/v1/', include('api.urls')),
     path('api-auth', include('rest_framework.urls')), # ログイン機能 ＋ 権限制御制御
     path('api/v1/rest-auth/', include('rest_auth.urls')), # 認証 ログイン／ログアウト／リセット／リセット確認
-    path('api/v1/rest-auth/registration/',
-         include('rest_auth.registration.urls')), # サインアップ(新規登録)
+    # path('api/v1/rest-auth/registration/',
+    #      include('rest_auth.registration.urls')), # サインアップ(新規登録)
     path('docs/', include_docs_urls(title='Blog API')), # ドキュメント
     path('schema/', schema_view), # ドキュメント
     
