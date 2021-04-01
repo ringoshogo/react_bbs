@@ -1,0 +1,25 @@
+version: 1
+task_definition:
+  # ecs_network_mode: awsvpc
+  # task_execution_role: ecsTaskExecutionRole
+  services:
+    nginx:
+      mem_limit: 150m
+      mem_reservation: 128m
+    api:
+      mem_limit: 648m
+      mem_reservation: 600m
+    db:
+      mem_limit: 248m
+      mem_reservation: 200m
+
+# awsvpc モードでのみ使用
+# run_params:
+#   network_configuration:
+#     awsvpc_configuration:
+#       subnets:
+#         - subnet-0accec0709d588932
+#         - subnet-00fda8fd3f237839a
+#         - subnet-0d74d7eb6eaaaf39f
+#       security_groups:
+#         - sg-03afe044cd9b46717

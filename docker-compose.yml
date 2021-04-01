@@ -10,7 +10,7 @@ services:
       dockerfile: ./docker/react/Dockerfile # dockerfile が格納されたフォルダ
     command: npm start
     volumes: 
-      - ./bbs:/app
+      - "./bbs:/app"
     # ホスト側:コンテナ側。60以下でエラーが発生するため文字列指定を推奨
     ports:
       - 3000:3000
@@ -23,7 +23,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./api:/app
+      - "./api:/app"
     command:
       bash -c "python manage.py makemigrations &&
       python manage.py migrate &&
@@ -42,24 +42,24 @@ services:
         MYSQL_USER: sennseikou
         MYSQL_PASSWORD: password
       volumes:
-        - dbdata:/var/lib/mysql/
+        - "dbdata:/var/lib/mysql/"
       ports:
         - 5432:3306
 
   nginx:
     container_name: nginx
     build:
-      context: .
+      context: "."
       dockerfile: ./docker/nginx/Dockerfile
     ports:
       - 8080:80
     volumes:
-      - ./bbs/build:/var/www
-      - ./nginx/:/etc/nginx/conf.d/
+      - "./bbs/build:/var/www"
+      - "./nginx/:/etc/nginx/conf.d/"
+      # volumeで共有する内容をDockerfileに記載する
     depends_on: 
       - react-app
 
 volumes:
 
   dbdata:
-    driver: local

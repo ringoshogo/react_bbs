@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  db:
+    image: 814478782322.dkr.ecr.ap-northeast-1.amazonaws.com/sennseikou_db:latest
+    volumes:
+      - /db/data:/var/lib/mysql              # データの永続化を行う
+    environment:
+      - MYSQL_DATABASE=nani_taberu
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=sennseikou
+      - MYSQL_PASSWORD=password
+      - TZ=Asia/Tokyo
+    ports:
+      - 3306:3306
+
+  api:
+    image: 814478782322.dkr.ecr.ap-northeast-1.amazonaws.com/sennseikou_backend:latest
+    command:
+      bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+      # bash -c "python //app/manage.py makemigrations"
+    environment: 
+      - DATABASE_URL=mysql://sennseikou:password@db:3306/nani_taberu
+    ports:
+      - 8000:8000
+    links:
+      - db
+
+  nginx:
+    image: 814478782322.dkr.ecr.ap-northeast-1.amazonaws.com/sennseikou_frontend:latest
+    ports:
+      - "80:80"
+    links:
+      - api
