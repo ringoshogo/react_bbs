@@ -63,8 +63,8 @@
 　・npm install</br>
 　・npm start</br>
 * apiフォルダ配下で以下のコマンドを実行</br>
-　・pip install -r requirements.txt
-　・python manage.py createsuperuser
+　・pip install -r requirements.txt</br>
+　・python manage.py createsuperuser</br>
 　・python manage.py makemigrations</br>
 　・python manage.py migrate</br>
 　・python manage.py runserver</br>
