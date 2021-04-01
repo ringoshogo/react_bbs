@@ -3,7 +3,7 @@
 賞味期限切れの食べ物を食べた結果(味・見た目・食後の健康状態)を共有するサイト
  
 # イメージ図
- 
+ ![can_you_eat](https://user-images.githubusercontent.com/30945996/113302158-dec97000-92a3-11eb-8ff0-f140921cdb14.JPG)
 
  
 # 概要
