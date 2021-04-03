@@ -15,7 +15,8 @@
 /coverage
 
 # production
-/build
+# ⇒ レビュー用に除外
+# /build
 
 .eslintcache
 
