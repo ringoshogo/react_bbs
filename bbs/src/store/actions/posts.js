@@ -89,14 +89,12 @@ export const addPost = (post) => {
     form.append("food_image", post.image[0]);
     form.append("describe", post.describe);
     form.append("title", post.title);
-    console.log(form);
 
     return dispatch => {
         axios.post("/posts/", form ,{headers: {
             'content-type': 'multipart/form-data',
         }})
         .then(res => {
-            console.log(res.data);
             dispatch(addPostSuccess(res.data));
         })
         .catch(err => {
@@ -144,7 +142,6 @@ const callAxiosFetchPostDetails = (dispatch, postid, index) => {
     const url = "/posts/" + postid + "/";
     axios.get(url)
         .then(res => {
-            console.log(res.data);
             dispatch(fetchDetailSuccess(res.data, index));
         })
         .catch(err => {
@@ -167,8 +164,6 @@ export const addResponse = (responseInfo, postid, postIndex) => {
         expire_date: responseInfo.expiredDays,
         expire_type: 1,
         comment: responseInfo.comment,};
-
-    console.log(postContents);
 
     return dispatch => {
         axios.post("/response/", postContents,  {

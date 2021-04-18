@@ -47,7 +47,7 @@ class newPost extends Component {
                 valid: true,  //現時点では表面上チェックする項目はなし
             }
         },
-        images: null,
+        keyid: 1,
     }
 
     inputChangeHandler = (event, postFormId) => {
@@ -69,15 +69,17 @@ class newPost extends Component {
         for (let key in this.state.postForm) {
             result[key] = this.state.postForm[key].value
         }
-        console.log(result);
         this.props.onAddPost(result);
-        this.setState({
+        const newState = {
             postForm: {
                 title: {...this.state.postForm.title, value: "", touched: false},
                 describe: {...this.state.postForm.describe, value: "", touched: false},
                 image: {...this.state.postForm.image, value: null, touched: true},
             },
-        })
+            keyid: this.state.keyid + 1
+        }
+        this.setState(newState)
+        console.log(newState)
     }
 
     render() {
@@ -91,6 +93,7 @@ class newPost extends Component {
 
         const posts = postArr.map(e =>
             (<Input 
+                key={e.id + this.state.keyid}
                 elementType={e.contents.elementType}
                 elementConfig={e.contents.elementConfig}
                 value={e.contents.value}

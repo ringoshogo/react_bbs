@@ -54,7 +54,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - "./bbs/build:/var/www"
+      - "./bbs/build:/var/www/frontend_service"
       - "./nginx/:/etc/nginx/conf.d/"
       # volumeで共有する内容をDockerfileに記載する
     depends_on: 
