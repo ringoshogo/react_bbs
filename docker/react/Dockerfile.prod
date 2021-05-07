@@ -1,0 +1,20 @@
+FROM node:14-alpine as build
+
+WORKDIR /app
+
+COPY ./bbs/package.json .
+
+RUN npm install
+
+COPY ./bbs .
+
+RUN npm run build
+
+FROM nginx
+# 上記で作成したステージから新しいステージへと遷移する
+# 上記ステージ(buildステージ)のビルドファイルをnginxのデフォルトで検索するファイル(/usr/share/nginx/html)にコピーする
+COPY --from=build  /app/build /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

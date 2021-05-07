@@ -1,7 +1,11 @@
 # 食べても大丈夫？
  
 賞味期限切れの食べ物を食べた結果(味・見た目・食後の健康状態)を共有するサイト
- 
+
+# URL
+frontend-268016273.ap-northeast-1.elb.amazonaws.com
+※ 現在は停止中
+
 # イメージ図
  ![can_you_eat](https://user-images.githubusercontent.com/30945996/113302158-dec97000-92a3-11eb-8ff0-f140921cdb14.JPG)
 
@@ -52,23 +56,6 @@ https://youtu.be/S-rSE9cByuM
 * django-rest-auth: 0.9.5
 
 ## インフラ
-* AWS/ECS
+* AWS/ECS/ECR/FARGATE/ALB
 * Docker
 * Nginx(WebServer)
-
-# クローン後のローカル環境での動かし方
-
-* /api/.env ファイルの作成(次の2変数を定義 ⇒ REACT_APP_END_POINT=APIのURL、REACT_APP_AXIOS_BASE_URL=axiosのbase URL)</br>
-　例) REACT_APP_END_POINT=http://127.0.0.1:8000</br>
- 　　 REACT_APP_AXIOS_BASE_URL=http://127.0.0.1:8000/api/v1/
-* /bbs/.env ファイルの作成(次の1変数を定義 ⇒ DATABASE_URL=mysql://root:@localhost:3306/nani_taberu)
-* msqyl 上にDBを作成(DB名：nani_taberu)し、起動
-* bbsフォルダ配下で以下のコマンドを実行</br>
-　・npm install</br>
-　・npm start</br>
-* apiフォルダ配下で以下のコマンドを実行</br>
-　・pip install -r requirements.txt</br>
-　・python manage.py createsuperuser</br>
-　・python manage.py makemigrations</br>
-　・python manage.py migrate</br>
-　・python manage.py runserver</br>

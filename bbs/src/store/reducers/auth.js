@@ -21,9 +21,6 @@ const authStart = (state, action) => {
 }
 
 const authSuccess = (state, action) => {
-
-    console.log(action.userInfo.username);
-    console.log(action.userInfo);
    
     const updateState = {...state, 
         userInfo: {

@@ -31,7 +31,7 @@ SECRET_KEY = 'vqhog#$lk3_s10#1mq5+c@1%!6$8+hi!tt@sknnb9dc!qxa=k2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -118,6 +118,11 @@ MIDDLEWARE = [
 # cors関連で追加
 CORS_ORIGIN_ALLOW_ALL=True
 
+# 20210505cors関連で追加
+CORS_ORIGIN_WHITELIST = (
+    'http://frontend-268016273.ap-northeast-1.elb.amazonaws.com/',
+    'http://frontend-268016273.ap-northeast-1.elb.amazonaws.com',
+)
 ROOT_URLCONF = 'bbs.urls'
 
 TEMPLATES = [

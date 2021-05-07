@@ -86,7 +86,9 @@ export const addGoodClick = (response, postIndex, responseIndex) => {
 export const addPost = (post) => {
     // 現状、ファイルのアップロードにはフォームデータとするのが必要のよう
     const form = new FormData();
-    form.append("food_image", post.image[0]);
+    if (post.image[0] !== undefined) {
+        form.append("food_image", post.image[0]);
+    }
     form.append("describe", post.describe);
     form.append("title", post.title);
 

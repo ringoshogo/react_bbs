@@ -133,8 +133,6 @@ class Auth extends Component {
      */
     onSubmitHandler = () => {
 
-        console.log("onsubmithandler is called");
-
         if (this.state.isSignUp && this.state.formElement.password.value != this.state.formElement.password2.value) {
             alert("パスワードが一致しません。");
             return;

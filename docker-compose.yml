@@ -14,6 +14,12 @@ services:
     # ホスト側:コンテナ側。60以下でエラーが発生するため文字列指定を推奨
     ports:
       - 3000:3000
+    # -it モードをオンにする処理
+    # stdin_open: true
+    # tty: true
+    depends_on:
+      - api
+
 
   api:
     container_name: api
@@ -54,7 +60,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - "./bbs/build:/var/www/frontend_service"
+      - "./bbs/build:/var/www"
       - "./nginx/:/etc/nginx/conf.d/"
       # volumeで共有する内容をDockerfileに記載する
     depends_on: 
